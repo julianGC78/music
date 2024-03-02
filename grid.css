@@ -1,0 +1,511 @@
+@import url(./reset.css);
+body {
+   width: 98vw;
+   height: auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   z-index: 0;
+}
+/*/////////////////////////////////////////////////*/
+
+/* Titulo de la pagina, con su imagen */
+nav {
+   margin-bottom: 20px;
+}
+nav span {
+   font-family: "Montserrat Subrayada", sans-serif;
+   font-size: 65px;
+   font-weight: 400;
+   font-style: normal;
+}
+.vinilo img {
+   position: relative;
+   top: 20px;
+   left: -5px;
+   right: 5px;
+}
+/*/////////////////////////////////////////////////*/
+
+/* Grid general con sus 4 columnas grid */
+.general {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-template-rows: 600px;
+   width: 80%;
+   height: 600px;
+   cursor: pointer;
+   position: relative;
+}
+.grid {
+   width: 100%;
+   height: 100%;
+   display: grid;
+   grid-template-columns: 1fr;
+   position: relative;
+   grid-row: 1/2;
+}
+.grid1 {
+   grid-template-rows: 50% 7% 43%;
+   grid-column: 1/2;
+}
+.grid2 {
+   grid-template-rows: 50% 20% 30%;
+   grid-column: 2/3;
+}
+.grid3 {
+   grid-template-rows: 50% 10% 40%;
+   grid-column: 3/4;
+}
+.grid4 {
+   grid-template-rows: 50% 15% 35%;
+   grid-column: 4/5;
+}
+/*/////////////////////////////////////////////////*/
+
+/* Etiqueta  que envulve a cada grid para redirecion local*/
+a {
+   text-decoration: none;
+   display: block;
+   width: 100%;
+   height: 100%;
+}
+/*/////////////////////////////////////////////////*/
+
+/* div de cada columna con los contenidos texto e imagen*/
+.caja {
+   grid-column: 1/2;
+   grid-row: 1/7;
+   position: relative;
+   overflow: hidden;
+   z-index: 1;
+}
+
+/* Texto con sus estilos*/
+.texto {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   grid-column: 1/2;
+   grid-row: 1/2;
+}
+.t1 {
+   color: var(--Verde);
+}
+.t2 {
+   color: var(--Azul);
+}
+.t3 {
+   color: var(--Violeta);
+}
+.t4 {
+   color: var(--Gris);
+}
+.texto.t1 .fecha,
+.texto.t2 .fecha,
+.texto.t3 .fecha,
+.texto.t4 .fecha {
+   font-size: 20px;
+   text-decoration: underline;
+}
+.texto p {
+   font-family: "Anton", sans-serif;
+   text-align: center;
+   font-size: 40px;
+   z-index: 3;
+}
+.texto.t1 span {
+   position: relative;
+   z-index: 3;
+}
+.texto.t2 span {
+   position: relative;
+   z-index: 3;
+}
+.texto.t3 span {
+   position: relative;
+   z-index: 3;
+}
+.texto.t4 span {
+   position: relative;
+   z-index: 3;
+}
+
+/* Div con sus imagenes, estilos y tranformacion*/
+.imagen {
+   grid-column: 1/2;
+   grid-row: 3/4;
+   position: relative;
+   overflow: hidden;
+   z-index: 1;
+}
+.imagen::after {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-size: cover;
+   background-position: center;
+   transition: transform 0.5s;
+}
+
+.imagen1::after {
+   background-image: url(./images/Detroit3.jpg);
+}
+
+.imagen2::after {
+   background-image: url(./images/tresor4.jpg);
+}
+.imagen3::after {
+   background-image: url(./images/House1.jpg);
+}
+
+.imagen4::after {
+   background-image: url(./images/FabrikLondon.jpg);
+}
+
+/* efecto de escalar la image de tamaño*/
+.grid1:hover .imagen1::after,
+.grid2:hover .imagen2::after,
+.grid3:hover .imagen3::after,
+.grid4:hover .imagen4::after {
+   transform: scale(1.3);
+}
+/*/////////////////////////////////////////////////*/
+
+/* Div cortina pra crear efecto cortina */
+.cortina {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 100%;
+   transition: top 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+   z-index: 0;
+}
+.c1 {
+   background-color: var(--Verde);
+}
+.c2 {
+   background-color: var(--Azul);
+}
+.c3 {
+   background-color: var(--Violeta);
+}
+.c4 {
+   background-color: var(--Gris);
+}
+/*/////////////////////////////////////////////////*/
+
+/* hover de cortina */
+.grid1:hover .caja .cortina,
+.grid2:hover .caja .cortina,
+.grid3:hover .caja .cortina,
+.grid4:hover .caja .cortina {
+   top: 0;
+}
+
+.hover-area {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   z-index: 2;
+}
+
+/* hover de texto*/
+.grid1:hover .texto p,
+.grid2:hover .texto p,
+.grid3:hover .texto p,
+.grid4:hover .texto p {
+   color: var(--Blanco);
+}
+.grid1:hover .texto span,
+.grid2:hover .texto span,
+.grid3:hover .texto span,
+.grid4:hover .texto span {
+   color: var(--Blanco);
+}
+/*/////////////////////////////////////////////////*/
+
+/* div para el efecto del cursor flotante*/
+.cursor {
+   display: none;
+   position: absolute;
+   background-color: rgba(0, 0, 0, 0.1);
+   border-radius: 50%;
+   width: 100px;
+   height: 100px;
+   pointer-events: none;
+   z-index: 5;
+}
+/* Texto del curosr */
+.cursor-text {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+/*/////////////////////////////////////////////////*/
+/* dicvisor entre los grid y la primera imagen */
+.d1 {
+   height: 50px;
+}
+/*/////////////////////////////////////////////////*/
+
+/* Div donde se palica el texto de la historia musical */
+.articulo {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 80%;
+   height: 630px;
+   font-family: "Roboto", sans-serif;
+}
+.articulo p {
+   text-align: justify;
+   font-size: 17px;
+   margin: 0.3em 0;
+}
+/*/////////////////////////////////////////////////*/
+
+/* div con als imagenes d elos artistas con efecto parrallax */
+.parallax {
+   background-size: cover;
+   background-attachment: fixed;
+   width: 80%;
+   height: 600px;
+}
+.p1 {
+   background-image: url(./images/Padres.jpg);
+}
+.p2 {
+   background-image: url(./images/PionerosTrance.jpg);
+}
+.p3 {
+   background-image: url(./images/KNUCKLES.jpg);
+}
+.p4 {
+   background-image: url(./images//andy_c_live_on_stage-hd.jpg);
+}
+/*/////////////////////////////////////////////////*/
+
+/* contenedor con el nombre del artista que superpone a al imagen del mismo */
+.artista {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 500px;
+   position: absolute;
+   left: 20%;
+   width: 60%;
+   height: 70px;
+   color: var(--Blanco);
+   font-size: 30px;
+   font-family: "Montserrat Subrayada", sans-serif;
+   background-color: rgba(128, 128, 128, 0.566);
+}
+/*/////////////////////////////////////////////////*/
+
+@media (width < 950px) {
+   nav span {
+      font-size: 55px;
+   }
+   .vinilo img {
+      max-height: 80px;
+      top: 20px;
+      left: 0px;
+      right: 5px;
+   }
+   .general {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr 1fr;
+      width: 80%;
+      height: 600px;
+   }
+   .grid1 {
+      grid-template-rows: 43% 7% 50%;
+      grid-column: 1/2;
+      grid-row: 1/2;
+   }
+   .grid2 {
+      grid-template-rows: 30% 20% 50%;
+      grid-column: 2/3;
+      grid-row: 1/2;
+   }
+   .grid3 {
+      grid-template-rows: 40% 10% 50%;
+      grid-column: 1/2;
+      grid-row: 2/3;
+   }
+   .grid4 {
+      grid-template-rows: 35% 15% 50%;
+      grid-column: 2/3;
+      grid-row: 2/3;
+   }
+   .imagen {
+      grid-column: 1/2;
+      grid-row: 1/2;
+   }
+   .texto {
+      grid-column: 1/2;
+      grid-row: 3/4;
+   }
+   .texto {
+      margin-bottom: 40px;
+   }
+
+   .texto p {
+      font-size: 25px;
+   }
+
+   .articulo {
+      width: 80%;
+      height: 630px;
+   }
+   .articulo p {
+      font-size: 14px;
+   }
+   .parallax {
+      background-position: 50%;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      width: 80%;
+      height: 390px;
+   }
+   .artista {
+      margin-top: 300px;
+      font-size: 18px;
+      height: 40px;
+   }
+}
+@media (width < 680px) {
+   .artista {
+      margin-top: 280px;
+      font-size: 17px;
+   }
+}
+
+@media (width < 600px) {
+   nav span {
+      font-size: 40px;
+   }
+   .vinilo img {
+      max-height: 60px;
+      top: 20px;
+      left: 0px;
+      right: 5px;
+   }
+   .general {
+      grid-template-columns: 1fr;
+      grid-template-rows: 200px 200px 200px 200px;
+      width: 80%;
+      overflow: hidden;
+   }
+   .grid1 {
+      grid-template-rows: 50% 0% 50%;
+      grid-column: 1/2;
+      grid-row: 1/3;
+   }
+   .grid2 {
+      grid-template-rows: 50% 0% 50%;
+      grid-column: 1/2;
+      grid-row: 2/3;
+   }
+   .grid3 {
+      grid-template-rows: 50% 0% 50%;
+      grid-column: 1/2;
+      grid-row: 3/4;
+   }
+   .grid4 {
+      grid-template-rows: 50% 0% 50%;
+      grid-column: 1/2;
+      grid-row: 4/5;
+   }
+   .imagen {
+      grid-column: 1/2;
+      grid-row: 1/2;
+   }
+
+   .texto {
+      color: var(--Blanco);
+      grid-column: 1/2;
+      grid-row: 3/4;
+   }
+   .texto {
+      margin-top: 30px;
+   }
+   .texto p {
+      font-size: 22px;
+   }
+   .texto.t1 .fecha,
+   .texto.t2 .fecha,
+   .texto.t3 .fecha,
+   .texto.t4 .fecha {
+      font-size: 18px;
+   }
+   .cortina {
+      top: 0;
+      z-index: 3;
+   }
+   .articulo {
+      width: 80%;
+      height: 540px;
+   }
+   .articulo p {
+      font-size: 13px;
+   }
+   .parallax {
+      background-position: 50%;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 80%;
+      height: 390px;
+   }
+   .artista {
+      margin-top: 250px;
+      font-size: 18px;
+   }
+}
+@media (width < 450px) {
+   nav span {
+      font-size: 30px;
+   }
+   .vinilo img {
+      max-height: 50px;
+      top: 15px;
+      left: 0px;
+      right: 5px;
+   }
+   
+   .articulo {
+      width: 80%;
+      height: 530px;
+   }
+   .articulo p {
+      font-size: 13px;
+   }
+   .articulo h1
+{
+   font-size: 20px;
+}   
+.articulo h2{
+   font-size: 17px;
+}
+.parallax {
+      background-position: 50%;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 80%;
+      height: 390px;
+   }
+   .artista {
+      margin-top: 230px;
+      font-size: 13px;
+   }
+}
+

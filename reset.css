@@ -1,0 +1,15 @@
+*{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+}
+:root {
+      --colorIntro: #f0f8ffa7;
+      --Blanco:  white;
+      --Verde:#69ac58;
+      --Azul:#006b8b;
+      --Violeta:#ba76ba;
+      --Gris: #898a84;
+      --textoT:"Single Day", cursive;
+      --textoI: Menlo,Roboto Mono,monospace;
+    }
